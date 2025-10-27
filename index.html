@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakila Praveen Rathnayake</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            max-width: 800px;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .specialization {
+            font-size: 1em;
+            color: #95a5a6;
+            margin-bottom: 40px;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .links a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .projects {
+            margin-top: 50px;
+            text-align: left;
+        }
+        .projects h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .project-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        .project-item h3 {
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+        .project-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Shakila Praveen Rathnayake</h1>
+        <p class="subtitle">Mechatronics Engineering Student</p>
+        <p class="specialization">Robotics • AI • Control Systems • Computer Vision</p>
+        
+        <div class="links">
+            <a href="https://github.com/shakilapr" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/shakilapraveen/" target="_blank">LinkedIn</a>
+            <a href="mailto:shakilabeta@gmail.com">Email</a>
+        </div>
+
+        <div class="projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="project-item">
+                <h3>Autonomous Indoor Robot with SLAM [Ongoing]</h3>
+                <p>Mobile robot with real-time mapping and adaptive decision-making using ROS2 and Python.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Neuro-Fuzzy Maglev Control</h3>
+                <p>ANFIS-based adaptive controller for magnetic levitation systems in MATLAB.</p>
+            </div>
+
+            <div class="project-item">
+                <h3>Handwritten Character Recognition</h3>
+                <p>CNN achieving 93.5% accuracy on EMNIST dataset using TensorFlow and Keras.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
