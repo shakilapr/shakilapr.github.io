@@ -12,182 +12,184 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
             background: #0a0e27;
             color: #e0e0e0;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 40px 20px;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Header */
+        .header {
             text-align: center;
-            position: relative;
+            padding: 60px 0;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.2);
         }
 
-        .hero h1 {
-            font-size: 3.5em;
-            font-weight: 700;
+        .header h1 {
+            font-size: 3em;
             color: #ffffff;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+            margin-bottom: 10px;
         }
 
-        .hero .subtitle {
+        .header .title {
             font-size: 1.3em;
             color: #64ffda;
-            margin-bottom: 15px;
-            font-weight: 500;
+            margin-bottom: 20px;
         }
 
-        .hero .tagline {
-            font-size: 1.1em;
-            color: #8892b0;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        /* Tech Stack Pills */
-        .tech-pills {
+        .contact-info {
             display: flex;
+            gap: 30px;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 40px;
+            margin-top: 20px;
         }
 
-        .tech-pill {
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid #64ffda;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            color: #64ffda;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .tech-pill:hover {
-            background: rgba(100, 255, 218, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* CTA Buttons */
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            font-size: 1em;
+        .contact-info a {
+            color: #8892b0;
             text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
+            transition: color 0.3s;
         }
 
-        .btn-primary {
-            background: transparent;
-            border: 2px solid #64ffda;
+        .contact-info a:hover {
             color: #64ffda;
         }
 
-        .btn-primary:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
-        }
-
-        .btn-secondary {
-            background: #64ffda;
-            color: #0a0e27;
-            border: 2px solid #64ffda;
-        }
-
-        .btn-secondary:hover {
-            background: transparent;
-            color: #64ffda;
-            transform: translateY(-3px);
-        }
-
-        /* Projects Section */
+        /* Section */
         .section {
-            padding: 80px 0;
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
         }
 
         .section-title {
-            font-size: 2.5em;
-            color: #ffffff;
-            margin-bottom: 50px;
+            font-size: 2em;
+            color: #64ffda;
+            margin-bottom: 30px;
             position: relative;
-            display: inline-block;
+            padding-bottom: 10px;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 0;
             width: 60px;
             height: 3px;
             background: #64ffda;
         }
 
+        /* Summary */
+        .summary {
+            font-size: 1.1em;
+            color: #8892b0;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        /* Education */
+        .education-item {
+            background: #112240;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 3px solid #64ffda;
+            transition: all 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(100, 255, 218, 0.2);
+        }
+
+        .education-item h3 {
+            color: #ffffff;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .education-item .institution {
+            color: #64ffda;
+            margin-bottom: 5px;
+        }
+
+        .education-item .year {
+            color: #8892b0;
+            font-size: 0.9em;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(100, 255, 218, 0.3);
+            transition: border-color 0.3s;
+        }
+
+        .experience-item:hover {
+            border-color: #64ffda;
+        }
+
+        .experience-item h3 {
+            color: #ffffff;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .company {
+            color: #64ffda;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .duration {
+            color: #8892b0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .experience-item p {
+            color: #8892b0;
+            line-height: 1.7;
+        }
+
+        /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .project-card {
             background: #112240;
-            border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
+            padding: 25px;
+            border-radius: 8px;
             border: 1px solid rgba(100, 255, 218, 0.1);
-            cursor: pointer;
+            transition: all 0.3s;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
+            transform: translateY(-5px);
             border-color: #64ffda;
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
         }
 
-        .project-number {
-            font-size: 0.85em;
-            color: #64ffda;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .project-title {
-            font-size: 1.4em;
+        .project-card h3 {
             color: #ffffff;
-            margin-bottom: 15px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.2em;
         }
 
-        .project-desc {
+        .project-card p {
             color: #8892b0;
             font-size: 0.95em;
-            line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         .project-tech {
@@ -196,196 +198,251 @@
             gap: 8px;
         }
 
-        .project-tech span {
-            font-size: 0.85em;
-            color: #64ffda;
+        .tech-tag {
             background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
             padding: 5px 12px;
-            border-radius: 15px;
+            border-radius: 12px;
+            font-size: 0.8em;
         }
 
-        /* Contact Section */
-        .contact-section {
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        .contact-title {
-            font-size: 2.5em;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
-        .contact-desc {
-            font-size: 1.1em;
-            color: #8892b0;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .social-links {
-            display: flex;
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            justify-content: center;
-            margin-top: 40px;
         }
 
-        .social-link {
-            color: #8892b0;
-            font-size: 1.8em;
-            transition: all 0.3s ease;
+        .skill-category h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.1em;
         }
 
-        .social-link:hover {
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid #64ffda;
+            padding: 8px 16px;
+            border-radius: 20px;
             color: #64ffda;
-            transform: translateY(-5px);
+            font-size: 0.9em;
+            transition: all 0.3s;
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator::after {
-            content: '↓';
-            font-size: 2em;
-            color: #64ffda;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+        .skill-item:hover {
+            background: rgba(100, 255, 218, 0.2);
+            transform: scale(1.05);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5em; }
+            .header h1 { font-size: 2em; }
             .projects-grid { grid-template-columns: 1fr; }
-            .cta-buttons { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
             <h1>Shakila Praveen Rathnayake</h1>
-            <p class="subtitle">Mechatronics Engineering Student</p>
-            <p class="tagline">Specializing in autonomous robotics, intelligent control systems, and computer vision</p>
+            <p class="title">Mechatronics Engineering • Final Year</p>
+            <div class="contact-info">
+                <a href="mailto:shakilabeta@gmail.com">✉ shakilabeta@gmail.com</a>
+                <a href="tel:+94712735664">📱 071 27 35 664</a>
+                <a href="https://linkedin.com/in/shakilapraveen" target="_blank">LinkedIn</a>
+                <a href="https://github.com/shakilapr" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="section">
+            <h2 class="section-title">About</h2>
+            <p class="summary">
+                Final year Mechatronics Engineering student at the Open University of Sri Lanka, specializing in autonomous robotics, intelligent control systems, machine learning, and computer vision. Experienced in developing SLAM-based navigation systems, neuro-fuzzy controllers, and deep learning applications. Strong foundation in embedded systems, PLC programming, and CAD design with hands-on project experience in real-world applications.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>B.Tech in Mechatronics Engineering</h3>
+                <p class="institution">The Open University of Sri Lanka</p>
+                <p class="year">2019 – Present | Reg. No.: 419221962 | Final Year</p>
+            </div>
+            <div class="education-item">
+                <h3>GCE Advanced Level - Physical Science Stream</h3>
+                <p class="institution">St. Thomas College, Matale</p>
+                <p class="year">2018</p>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section">
+            <h2 class="section-title">Experience</h2>
             
-            <div class="tech-pills">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">C++</span>
-                <span class="tech-pill">ROS2</span>
-                <span class="tech-pill">TensorFlow</span>
-                <span class="tech-pill">MATLAB</span>
-                <span class="tech-pill">OpenCV</span>
+            <div class="experience-item">
+                <h3>Engineering Article Writer</h3>
+                <p class="company">MechCollege - Personal Mechatronics Blog</p>
+                <p class="duration">2020 - Current</p>
+                <p>Writing technical articles on mechatronics, robotics, and automation topics through extensive research, textbooks, catalogues, and peer-reviewed research papers.</p>
             </div>
 
-            <div class="cta-buttons">
-                <a href="https://github.com/shakilapr" class="btn btn-primary" target="_blank">View GitHub</a>
-                <a href="mailto:shakilabeta@gmail.com" class="btn btn-secondary">Get in Touch</a>
+            <div class="experience-item">
+                <h3>Freelancer - Engineering & Design</h3>
+                <p class="company">Freelance</p>
+                <p class="duration">2015 - 2022</p>
+                <p>Provided professional services in SOLIDWORKS 3D modeling, CAD design, WordPress development, SEO optimization, graphic design, logo design, and branding.</p>
             </div>
-        </div>
-        <div class="scroll-indicator"></div>
-    </section>
 
-    <!-- Projects Section -->
-    <section class="section">
-        <div class="container">
+            <div class="experience-item">
+                <h3>Technical Assistant</h3>
+                <p class="company">Sisara Engineering (Pvt) Ltd.</p>
+                <p class="duration">May 2018 - Oct 2018</p>
+                <p>Worked on 4G LTE installation sub-contract project, responsible for setting up telecommunications infrastructure foundations.</p>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section">
             <h2 class="section-title">Featured Projects</h2>
-            
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-number">01 • ONGOING</div>
-                    <h3 class="project-title">Autonomous Indoor Robot with SLAM</h3>
-                    <p class="project-desc">Mobile robot implementing following-in-front navigation with real-time simultaneous localization and mapping. Uses predictive control and interactive decision-making at navigational junctions.</p>
+                    <h3>Autonomous Indoor Robot with SLAM</h3>
+                    <p>Mobile robot implementing following-in-front navigation with real-time SLAM, predictive control, and interactive decision-making at junctions.</p>
                     <div class="project-tech">
-                        <span>ROS2</span>
-                        <span>Python</span>
-                        <span>SLAM Toolbox</span>
-                        <span>RPi</span>
+                        <span class="tech-tag">ROS2</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SLAM Toolbox</span>
+                        <span class="tech-tag">Raspberry Pi</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-number">02</div>
-                    <h3 class="project-title">Neuro-Fuzzy Maglev Control</h3>
-                    <p class="project-desc">ANFIS-based adaptive controller for magnetic levitation combining fuzzy logic with neural network learning to handle nonlinear dynamics and achieve stable position control.</p>
+                    <h3>Neuro-Fuzzy Maglev Control System</h3>
+                    <p>ANFIS-based adaptive controller combining fuzzy logic with neural networks for magnetic levitation with minimal overshoot.</p>
                     <div class="project-tech">
-                        <span>MATLAB</span>
-                        <span>ANFIS</span>
-                        <span>Fuzzy Logic</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">ANFIS</span>
+                        <span class="tech-tag">Fuzzy Logic</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-number">03</div>
-                    <h3 class="project-title">Hybrid LSTM-ANFIS Control</h3>
-                    <p class="project-desc">Integrated LSTM network with ANFIS controller for time-series prediction in nonlinear systems. LSTM captures temporal dependencies while ANFIS handles real-time control.</p>
+                    <h3>Hybrid LSTM-ANFIS Maglev Control</h3>
+                    <p>Integrated LSTM with ANFIS for time-series prediction in nonlinear control systems with improved response characteristics.</p>
                     <div class="project-tech">
-                        <span>MATLAB</span>
-                        <span>LSTM</span>
-                        <span>Neural Networks</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">LSTM</span>
+                        <span class="tech-tag">Neural Networks</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-number">04</div>
-                    <h3 class="project-title">Handwritten Character Recognition</h3>
-                    <p class="project-desc">CNN trained on EMNIST balanced dataset for multi-class classification. Architecture includes convolutional layers, dropout regularization achieving 93.5% accuracy on 47 classes.</p>
+                    <h3>Handwritten Character Recognition</h3>
+                    <p>CNN trained on EMNIST dataset achieving 93.5% accuracy on 47 character classes with dropout regularization.</p>
                     <div class="project-tech">
-                        <span>TensorFlow</span>
-                        <span>Keras</span>
-                        <span>OpenCV</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Keras</span>
+                        <span class="tech-tag">OpenCV</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-number">05</div>
-                    <h3 class="project-title">PID Ball Levitation System</h3>
-                    <p class="project-desc">Closed-loop PID control for aerodynamic ball levitation with ultrasonic feedback. Implements system identification techniques to optimize controller gains.</p>
+                    <h3>PID Ball Levitation System</h3>
+                    <p>Closed-loop PID control for aerodynamic levitation with ultrasonic feedback and MATLAB system identification.</p>
                     <div class="project-tech">
-                        <span>Arduino</span>
-                        <span>MATLAB</span>
-                        <span>Control Theory</span>
+                        <span class="tech-tag">Arduino</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Control Theory</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-number">06</div>
-                    <h3 class="project-title">8051 Dumbwaiter Controller</h3>
-                    <p class="project-desc">Multi-floor elevator system in 8051 assembly with interrupt-driven architecture, timer-based error detection, load sensing, and PWM motor control.</p>
+                    <h3>8051 Dumbwaiter Controller</h3>
+                    <p>Multi-floor elevator system in assembly with interrupt-driven architecture, load sensing, and PWM motor control.</p>
                     <div class="project-tech">
-                        <span>8051 Assembly</span>
-                        <span>Proteus</span>
-                        <span>Embedded</span>
+                        <span class="tech-tag">8051 Assembly</span>
+                        <span class="tech-tag">Proteus</span>
+                        <span class="tech-tag">Embedded</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="contact-title">Let's Connect</h2>
-            <p class="contact-desc">I'm always interested in discussing robotics, AI, and control systems. Feel free to reach out for collaborations or opportunities.</p>
-            <div class="cta-buttons">
-                <a href="mailto:shakilabeta@gmail.com" class="btn btn-primary">Send Email</a>
+        <!-- Skills -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">C</span>
+                        <span class="skill-item">MATLAB</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Embedded & Hardware</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Arduino</span>
+                        <span class="skill-item">ESP32</span>
+                        <span class="skill-item">STM32</span>
+                        <span class="skill-item">Raspberry Pi</span>
+                        <span class="skill-item">PLC</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ML & Computer Vision</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">OpenCV</span>
+                        <span class="skill-item">YOLO</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Robotics & Control</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">ROS2</span>
+                        <span class="skill-item">SLAM</span>
+                        <span class="skill-item">ANFIS</span>
+                        <span class="skill-item">PID Control</span>
+                        <span class="skill-item">Fuzzy Logic</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Design & CAD</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">SolidWorks</span>
+                        <span class="skill-item">AutoCAD</span>
+                        <span class="skill-item">Proteus</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">VSCode</span>
+                        <span class="skill-item">Linux</span>
+                    </div>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="https://github.com/shakilapr" class="social-link" target="_blank" title="GitHub">⚙</a>
-                <a href="https://www.linkedin.com/in/shakilapraveen/" class="social-link" target="_blank" title="LinkedIn">in</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </body>
 </html>
