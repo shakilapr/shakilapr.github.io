@@ -3,115 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shakila Praveen Rathnayake</title>
+    <title>Shakila Praveen Rathnayake | Mechatronics Engineer</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-        }
-        .card {
-            background: white;
-            max-width: 800px;
-            padding: 60px 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             text-align: center;
+            position: relative;
         }
-        h1 {
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 10px;
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
-        .subtitle {
-            font-size: 1.2em;
-            color: #7f8c8d;
-            margin-bottom: 30px;
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            color: #64ffda;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
-        .specialization {
-            font-size: 1em;
-            color: #95a5a6;
+
+        .hero .tagline {
+            font-size: 1.1em;
+            color: #8892b0;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Tech Stack Pills */
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
             margin-bottom: 40px;
         }
-        .links a {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px 30px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
+
+        .tech-pill {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid #64ffda;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #64ffda;
+            transition: all 0.3s ease;
+            cursor: default;
         }
-        .links a:hover {
-            background: #2980b9;
+
+        .tech-pill:hover {
+            background: rgba(100, 255, 218, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-        .projects {
-            margin-top: 50px;
-            text-align: left;
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
         }
-        .projects h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #2c3e50;
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 1em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
         }
-        .project-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
+
+        .btn-primary {
+            background: transparent;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+        }
+
+        .btn-primary:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .btn-secondary {
+            background: #64ffda;
+            color: #0a0e27;
+            border: 2px solid #64ffda;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: #64ffda;
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #64ffda;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #112240;
             border-radius: 10px;
-            border-left: 4px solid #3498db;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            cursor: pointer;
         }
-        .project-item h3 {
-            color: #3498db;
-            margin-bottom: 5px;
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
+            border-color: #64ffda;
         }
-        .project-item p {
-            color: #666;
+
+        .project-number {
+            font-size: 0.85em;
+            color: #64ffda;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 1.4em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            color: #8892b0;
             font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tech span {
+            font-size: 0.85em;
+            color: #64ffda;
+            background: rgba(100, 255, 218, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .contact-title {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .contact-desc {
+            font-size: 1.1em;
+            color: #8892b0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            color: #8892b0;
+            font-size: 1.8em;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #64ffda;
+            transform: translateY(-5px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2em;
+            color: #64ffda;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Shakila Praveen Rathnayake</h1>
-        <p class="subtitle">Mechatronics Engineering Student</p>
-        <p class="specialization">Robotics • AI • Control Systems • Computer Vision</p>
-        
-        <div class="links">
-            <a href="https://github.com/shakilapr" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/shakilapraveen/" target="_blank">LinkedIn</a>
-            <a href="mailto:shakilabeta@gmail.com">Email</a>
-        </div>
-
-        <div class="projects">
-            <h2>Featured Projects</h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Shakila Praveen Rathnayake</h1>
+            <p class="subtitle">Mechatronics Engineering Student</p>
+            <p class="tagline">Specializing in autonomous robotics, intelligent control systems, and computer vision</p>
             
-            <div class="project-item">
-                <h3>Autonomous Indoor Robot with SLAM [Ongoing]</h3>
-                <p>Mobile robot with real-time mapping and adaptive decision-making using ROS2 and Python.</p>
+            <div class="tech-pills">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">C++</span>
+                <span class="tech-pill">ROS2</span>
+                <span class="tech-pill">TensorFlow</span>
+                <span class="tech-pill">MATLAB</span>
+                <span class="tech-pill">OpenCV</span>
             </div>
 
-            <div class="project-item">
-                <h3>Neuro-Fuzzy Maglev Control</h3>
-                <p>ANFIS-based adaptive controller for magnetic levitation systems in MATLAB.</p>
-            </div>
-
-            <div class="project-item">
-                <h3>Handwritten Character Recognition</h3>
-                <p>CNN achieving 93.5% accuracy on EMNIST dataset using TensorFlow and Keras.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/shakilapr" class="btn btn-primary" target="_blank">View GitHub</a>
+                <a href="mailto:shakilabeta@gmail.com" class="btn btn-secondary">Get in Touch</a>
             </div>
         </div>
-    </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-number">01 • ONGOING</div>
+                    <h3 class="project-title">Autonomous Indoor Robot with SLAM</h3>
+                    <p class="project-desc">Mobile robot implementing following-in-front navigation with real-time simultaneous localization and mapping. Uses predictive control and interactive decision-making at navigational junctions.</p>
+                    <div class="project-tech">
+                        <span>ROS2</span>
+                        <span>Python</span>
+                        <span>SLAM Toolbox</span>
+                        <span>RPi</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">02</div>
+                    <h3 class="project-title">Neuro-Fuzzy Maglev Control</h3>
+                    <p class="project-desc">ANFIS-based adaptive controller for magnetic levitation combining fuzzy logic with neural network learning to handle nonlinear dynamics and achieve stable position control.</p>
+                    <div class="project-tech">
+                        <span>MATLAB</span>
+                        <span>ANFIS</span>
+                        <span>Fuzzy Logic</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">03</div>
+                    <h3 class="project-title">Hybrid LSTM-ANFIS Control</h3>
+                    <p class="project-desc">Integrated LSTM network with ANFIS controller for time-series prediction in nonlinear systems. LSTM captures temporal dependencies while ANFIS handles real-time control.</p>
+                    <div class="project-tech">
+                        <span>MATLAB</span>
+                        <span>LSTM</span>
+                        <span>Neural Networks</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">04</div>
+                    <h3 class="project-title">Handwritten Character Recognition</h3>
+                    <p class="project-desc">CNN trained on EMNIST balanced dataset for multi-class classification. Architecture includes convolutional layers, dropout regularization achieving 93.5% accuracy on 47 classes.</p>
+                    <div class="project-tech">
+                        <span>TensorFlow</span>
+                        <span>Keras</span>
+                        <span>OpenCV</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">05</div>
+                    <h3 class="project-title">PID Ball Levitation System</h3>
+                    <p class="project-desc">Closed-loop PID control for aerodynamic ball levitation with ultrasonic feedback. Implements system identification techniques to optimize controller gains.</p>
+                    <div class="project-tech">
+                        <span>Arduino</span>
+                        <span>MATLAB</span>
+                        <span>Control Theory</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">06</div>
+                    <h3 class="project-title">8051 Dumbwaiter Controller</h3>
+                    <p class="project-desc">Multi-floor elevator system in 8051 assembly with interrupt-driven architecture, timer-based error detection, load sensing, and PWM motor control.</p>
+                    <div class="project-tech">
+                        <span>8051 Assembly</span>
+                        <span>Proteus</span>
+                        <span>Embedded</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="contact-title">Let's Connect</h2>
+            <p class="contact-desc">I'm always interested in discussing robotics, AI, and control systems. Feel free to reach out for collaborations or opportunities.</p>
+            <div class="cta-buttons">
+                <a href="mailto:shakilabeta@gmail.com" class="btn btn-primary">Send Email</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/shakilapr" class="social-link" target="_blank" title="GitHub">⚙</a>
+                <a href="https://www.linkedin.com/in/shakilapraveen/" class="social-link" target="_blank" title="LinkedIn">in</a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
