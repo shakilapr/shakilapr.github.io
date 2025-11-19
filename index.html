@@ -1,448 +1,319 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shakila Praveen Rathnayake | Mechatronics Engineer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+import React, { useState } from 'react';
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Cpu, 
+  Code, 
+  Settings, 
+  Brain, 
+  Terminal,
+  MapPin,
+  Download,
+  ExternalLink,
+  ChevronRight
+} from 'lucide-react';
 
-        body {
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            background: #0a0e27;
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
+// --- DATA ---
+const PROFILE = {
+  name: "Shakila Praveen Rathnayake",
+  title: "Mechatronics Engineering Student",
+  image: "https://avatars.githubusercontent.com/u/88928308?v=4",
+  tagline: "AI • Robotics • Embedded Systems • Intelligent Control",
+  about: "Final Year Mechatronics Engineering Student specializing in AI, Robotics, Embedded Systems, Vision Systems, Intelligent Control & Data Engineering.",
+  email: "shakilabeta@gmail.com",
+  location: "Sri Lanka",
+  linkedin: "https://www.linkedin.com/in/shakilapraveen/",
+  github: "https://github.com/shakilap",
+  portfolio: "https://shakilap.github.io"
+};
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+const SKILLS = [
+  { category: "Languages", items: ["Python", "C++", "C", "MATLAB"] },
+  { category: "Embedded", items: ["ESP32", "STM32", "Arduino", "RPi", "PLC"] },
+  { category: "AI & Vision", items: ["TensorFlow", "PyTorch", "OpenCV", "YOLO"] },
+  { category: "Robotics", items: ["ROS2", "SLAM", "Nav2", "MoveIt"] },
+  { category: "Control", items: ["PID", "Fuzzy Logic", "ANFIS", "EKF"] },
+  { category: "Tools", items: ["SolidWorks", "AutoCAD", "Git", "Linux"] }
+];
 
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 60px 0;
-            border-bottom: 2px solid rgba(100, 255, 218, 0.2);
-        }
+const EXPERIENCE = [
+  {
+    role: "Freelancer",
+    company: "MachineTrend Agency",
+    period: "2020 – Present",
+    description: "Consulting on embedded systems, ROS2 implementation, and SOLIDWORKS modeling."
+  },
+  {
+    role: "Engineering Writer",
+    company: "MechCollege",
+    period: "2020 – Present",
+    description: "Technical research synthesis and documentation for engineering topics."
+  },
+  {
+    role: "Tech Assistant",
+    company: "Sisara Engineering",
+    period: "2018",
+    description: "4G LTE infrastructure deployment and foundation setup."
+  }
+];
 
-        .header h1 {
-            font-size: 3em;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
+const EDUCATION = [
+  { degree: "BSc Mechatronics Engineering", school: "Open University of Sri Lanka", period: "2019 – Present" },
+  { degree: "GCE A/Ls (Phy. Sci)", school: "St. Thomas College", period: "2018" }
+];
 
-        .header .title {
-            font-size: 1.3em;
-            color: #64ffda;
-            margin-bottom: 20px;
-        }
+const PROJECTS = [
+  {
+    id: 1,
+    title: "Autonomous Indoor Robot (FiF)",
+    category: "Robotics",
+    status: "Ongoing",
+    link: "https://github.com/shakilap",
+    description: "ROS2 mobile platform with 'Following-in-Front' navigation. Uses hybrid trajectory prediction and gesture interaction for decision points.",
+    tech: ["ROS2", "SLAM", "ESP32", "RPi Zero", "LDS LiDAR"]
+  },
+  {
+    id: 2,
+    title: "Neuro-Fuzzy Maglev Control",
+    category: "Control",
+    link: "https://github.com/shakilap",
+    description: "ANFIS controller for magnetic levitation. Hybrid neural-fuzzy approach for nonlinear stability.",
+    tech: ["MATLAB", "ANFIS", "Fuzzy Logic"]
+  },
+  {
+    id: 3,
+    title: "Hybrid LSTM-ANFIS System",
+    category: "AI",
+    link: "https://github.com/shakilap",
+    description: "Time-series prediction in nonlinear systems using LSTM for temporal dependencies and ANFIS for control.",
+    tech: ["MATLAB", "LSTM", "Neural Networks"]
+  },
+  {
+    id: 4,
+    title: "Handwritten OCR Engine",
+    category: "AI",
+    link: "https://github.com/shakilap",
+    description: "CNN trained on EMNIST balanced dataset. Classifies 47 character classes with high accuracy.",
+    tech: ["TensorFlow", "Keras", "OpenCV"]
+  },
+  {
+    id: 5,
+    title: "PID Aerodynamic Levitation",
+    category: "Control",
+    link: "https://github.com/shakilap",
+    description: "Closed-loop ball levitation with ultrasonic feedback and system identification.",
+    tech: ["Arduino", "MATLAB", "Control Theory"]
+  },
+  {
+    id: 6,
+    title: "8051 Dumbwaiter",
+    category: "Embedded",
+    link: "https://github.com/shakilap",
+    description: "Assembly-based elevator control with load cells and variable speed PWM.",
+    tech: ["Assembly", "Proteus"]
+  }
+];
 
-        .contact-info {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+// --- COMPONENTS ---
 
-        .contact-info a {
-            color: #8892b0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+const SkillTag = ({ children }) => (
+  <span className="text-xs font-mono text-teal-300 bg-teal-900/20 px-2 py-1 rounded border border-teal-900/50 hover:border-teal-500/50 transition-colors cursor-default">
+    {children}
+  </span>
+);
 
-        .contact-info a:hover {
-            color: #64ffda;
-        }
-
-        /* Section */
-        .section {
-            padding: 50px 0;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .section-title {
-            font-size: 2em;
-            color: #64ffda;
-            margin-bottom: 30px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: #64ffda;
-        }
-
-        /* Summary */
-        .summary {
-            font-size: 1.1em;
-            color: #8892b0;
-            line-height: 1.8;
-            max-width: 900px;
-        }
-
-        /* Education */
-        .education-item {
-            background: #112240;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 3px solid #64ffda;
-            transition: all 0.3s;
-        }
-
-        .education-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(100, 255, 218, 0.2);
-        }
-
-        .education-item h3 {
-            color: #ffffff;
-            font-size: 1.3em;
-            margin-bottom: 8px;
-        }
-
-        .education-item .institution {
-            color: #64ffda;
-            margin-bottom: 5px;
-        }
-
-        .education-item .year {
-            color: #8892b0;
-            font-size: 0.9em;
-        }
-
-        /* Experience */
-        .experience-item {
-            margin-bottom: 30px;
-            padding-left: 20px;
-            border-left: 2px solid rgba(100, 255, 218, 0.3);
-            transition: border-color 0.3s;
-        }
-
-        .experience-item:hover {
-            border-color: #64ffda;
-        }
-
-        .experience-item h3 {
-            color: #ffffff;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-
-        .experience-item .company {
-            color: #64ffda;
-            margin-bottom: 5px;
-        }
-
-        .experience-item .duration {
-            color: #8892b0;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        .experience-item p {
-            color: #8892b0;
-            line-height: 1.7;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: #112240;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #64ffda;
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
-        }
-
-        .project-card h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .project-card p {
-            color: #8892b0;
-            font-size: 0.95em;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tech-tag {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-size: 0.8em;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-category h3 {
-            color: #ffffff;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-item {
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid #64ffda;
-            padding: 8px 16px;
-            border-radius: 20px;
-            color: #64ffda;
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-
-        .skill-item:hover {
-            background: rgba(100, 255, 218, 0.2);
-            transform: scale(1.05);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2em; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1>Shakila Praveen Rathnayake</h1>
-            <p class="title">Mechatronics Engineering • Final Year</p>
-            <div class="contact-info">
-                <a href="mailto:shakilabeta@gmail.com">✉ shakilabeta@gmail.com</a>
-                <a href="tel:+94712735664">📱 071 27 35 664</a>
-                <a href="https://linkedin.com/in/shakilapraveen" target="_blank">LinkedIn</a>
-                <a href="https://github.com/shakilapr" target="_blank">GitHub</a>
-            </div>
-        </header>
-
-        <!-- Summary -->
-        <section class="section">
-            <h2 class="section-title">About</h2>
-            <p class="summary">
-                Final year Mechatronics Engineering student at the Open University of Sri Lanka, specializing in autonomous robotics, intelligent control systems, machine learning, and computer vision. Experienced in developing SLAM-based navigation systems, neuro-fuzzy controllers, and deep learning applications. Strong foundation in embedded systems, PLC programming, and CAD design with hands-on project experience in real-world applications.
-            </p>
-        </section>
-
-        <!-- Education -->
-        <section class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <h3>B.Tech in Mechatronics Engineering</h3>
-                <p class="institution">The Open University of Sri Lanka</p>
-                <p class="year">2019 – Present | Reg. No.: 419221962 | Final Year</p>
-            </div>
-            <div class="education-item">
-                <h3>GCE Advanced Level - Physical Science Stream</h3>
-                <p class="institution">St. Thomas College, Matale</p>
-                <p class="year">2018</p>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="section">
-            <h2 class="section-title">Experience</h2>
-            
-            <div class="experience-item">
-                <h3>Engineering Article Writer</h3>
-                <p class="company">MechCollege - Personal Mechatronics Blog</p>
-                <p class="duration">2020 - Current</p>
-                <p>Writing technical articles on mechatronics, robotics, and automation topics through extensive research, textbooks, catalogues, and peer-reviewed research papers.</p>
-            </div>
-
-            <div class="experience-item">
-                <h3>Freelancer - Engineering & Design</h3>
-                <p class="company">Freelance</p>
-                <p class="duration">2015 - 2022</p>
-                <p>Provided professional services in SOLIDWORKS 3D modeling, CAD design, WordPress development, SEO optimization, graphic design, logo design, and branding.</p>
-            </div>
-
-            <div class="experience-item">
-                <h3>Technical Assistant</h3>
-                <p class="company">Sisara Engineering (Pvt) Ltd.</p>
-                <p class="duration">May 2018 - Oct 2018</p>
-                <p>Worked on 4G LTE installation sub-contract project, responsible for setting up telecommunications infrastructure foundations.</p>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section class="section">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Autonomous Indoor Robot with SLAM</h3>
-                    <p>Mobile robot implementing following-in-front navigation with real-time SLAM, predictive control, and interactive decision-making at junctions.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">ROS2</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">SLAM Toolbox</span>
-                        <span class="tech-tag">Raspberry Pi</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Neuro-Fuzzy Maglev Control System</h3>
-                    <p>ANFIS-based adaptive controller combining fuzzy logic with neural networks for magnetic levitation with minimal overshoot.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">MATLAB</span>
-                        <span class="tech-tag">ANFIS</span>
-                        <span class="tech-tag">Fuzzy Logic</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Hybrid LSTM-ANFIS Maglev Control</h3>
-                    <p>Integrated LSTM with ANFIS for time-series prediction in nonlinear control systems with improved response characteristics.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">MATLAB</span>
-                        <span class="tech-tag">LSTM</span>
-                        <span class="tech-tag">Neural Networks</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Handwritten Character Recognition</h3>
-                    <p>CNN trained on EMNIST dataset achieving 93.5% accuracy on 47 character classes with dropout regularization.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Keras</span>
-                        <span class="tech-tag">OpenCV</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>PID Ball Levitation System</h3>
-                    <p>Closed-loop PID control for aerodynamic levitation with ultrasonic feedback and MATLAB system identification.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Arduino</span>
-                        <span class="tech-tag">MATLAB</span>
-                        <span class="tech-tag">Control Theory</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>8051 Dumbwaiter Controller</h3>
-                    <p>Multi-floor elevator system in assembly with interrupt-driven architecture, load sensing, and PWM motor control.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">8051 Assembly</span>
-                        <span class="tech-tag">Proteus</span>
-                        <span class="tech-tag">Embedded</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">C++</span>
-                        <span class="skill-item">C</span>
-                        <span class="skill-item">MATLAB</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Embedded & Hardware</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Arduino</span>
-                        <span class="skill-item">ESP32</span>
-                        <span class="skill-item">STM32</span>
-                        <span class="skill-item">Raspberry Pi</span>
-                        <span class="skill-item">PLC</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>ML & Computer Vision</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">TensorFlow</span>
-                        <span class="skill-item">PyTorch</span>
-                        <span class="skill-item">OpenCV</span>
-                        <span class="skill-item">YOLO</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Robotics & Control</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">ROS2</span>
-                        <span class="skill-item">SLAM</span>
-                        <span class="skill-item">ANFIS</span>
-                        <span class="skill-item">PID Control</span>
-                        <span class="skill-item">Fuzzy Logic</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Design & CAD</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">SolidWorks</span>
-                        <span class="skill-item">AutoCAD</span>
-                        <span class="skill-item">Proteus</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Tools & Platforms</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">VSCode</span>
-                        <span class="skill-item">Linux</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+const ProjectCard = ({ project }) => (
+  <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4 hover:border-teal-500/40 transition-all group">
+    <div className="flex justify-between items-start mb-2">
+      <h4 className="text-slate-100 font-bold group-hover:text-teal-400 transition-colors text-sm md:text-base">
+        {project.link ? (
+          <a 
+            href={project.link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 hover:underline decoration-teal-500/30 underline-offset-4"
+          >
+            {project.title}
+            <ExternalLink size={12} className="text-slate-500 group-hover:text-teal-400" />
+          </a>
+        ) : (
+          project.title
+        )}
+      </h4>
+      <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold border border-slate-800 px-1.5 rounded">
+        {project.category}
+      </span>
     </div>
-</body>
-</html>
+    <p className="text-xs text-slate-400 leading-relaxed mb-3">
+      {project.description}
+    </p>
+    <div className="flex flex-wrap gap-1.5">
+      {project.tech.slice(0, 4).map((t, i) => (
+        <span key={i} className="text-[10px] text-slate-500 bg-slate-950 px-1.5 py-0.5 rounded border border-slate-900">
+          {t}
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
+export default function Portfolio() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const categories = ['All', ...new Set(PROJECTS.map(p => p.category))];
+  const filteredProjects = activeFilter === 'All' 
+    ? PROJECTS 
+    : PROJECTS.filter(p => p.category === activeFilter);
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-300 font-sans p-4 md:p-8 flex justify-center items-start">
+      
+      {/* Main Container - A4 / Dashboard Ratio */}
+      <div className="max-w-6xl w-full bg-slate-900/30 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-sm flex flex-col md:flex-row">
+        
+        {/* SIDEBAR (Left Column) */}
+        <aside className="w-full md:w-80 lg:w-96 bg-slate-900/80 border-b md:border-b-0 md:border-r border-slate-800 p-6 flex flex-col gap-8">
+          
+          {/* Profile Header */}
+          <div>
+            <div className="w-24 h-24 rounded-full mb-6 overflow-hidden border-2 border-slate-700 shadow-lg shadow-teal-900/20">
+               <img src={PROFILE.image} alt={PROFILE.name} className="w-full h-full object-cover" />
+            </div>
+            <h1 className="text-2xl font-bold text-white tracking-tight">{PROFILE.name}</h1>
+            <p className="text-teal-400 font-medium mt-1 text-sm">{PROFILE.title}</p>
+            <div className="flex items-center gap-2 mt-4 text-xs text-slate-500">
+              <MapPin size={14} />
+              <span>{PROFILE.location}</span>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex gap-3">
+            <a href={PROFILE.github} target="_blank" rel="noreferrer" className="p-2 bg-slate-800 rounded-md hover:bg-teal-600 hover:text-white transition-colors"><Github size={18} /></a>
+            <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="p-2 bg-slate-800 rounded-md hover:bg-blue-600 hover:text-white transition-colors"><Linkedin size={18} /></a>
+            <a href={`mailto:${PROFILE.email}`} className="p-2 bg-slate-800 rounded-md hover:bg-emerald-600 hover:text-white transition-colors"><Mail size={18} /></a>
+          </div>
+
+          {/* Education */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider mb-4 flex items-center gap-2">
+              <Brain size={16} className="text-teal-500" /> Education
+            </h3>
+            <div className="space-y-4">
+              {EDUCATION.map((edu, i) => (
+                <div key={i} className="pl-3 border-l-2 border-slate-800">
+                  <div className="text-sm text-slate-200 font-medium">{edu.degree}</div>
+                  <div className="text-xs text-slate-500 mt-0.5">{edu.school}</div>
+                  <div className="text-[10px] text-teal-500/70 font-mono mt-1">{edu.period}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Skills */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider mb-4 flex items-center gap-2">
+              <Terminal size={16} className="text-teal-500" /> Technical Arsenal
+            </h3>
+            <div className="space-y-4">
+              {SKILLS.map((skill, i) => (
+                <div key={i}>
+                  <div className="text-xs text-slate-500 mb-1.5 font-mono">{skill.category}</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skill.items.map((item, k) => (
+                      <SkillTag key={k}>{item}</SkillTag>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </aside>
+
+        {/* MAIN CONTENT (Right Column) */}
+        <main className="flex-1 p-6 md:p-10 overflow-y-auto h-full">
+          
+          {/* About Section */}
+          <section className="mb-10">
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <span className="text-teal-500">01.</span> About Me
+            </h2>
+            <p className="text-slate-400 leading-relaxed text-sm md:text-base border-l-4 border-slate-800 pl-4">
+              {PROFILE.about}
+            </p>
+          </section>
+
+          {/* Projects Section */}
+          <section className="mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <span className="text-teal-500">02.</span> Selected Projects
+              </h2>
+              
+              {/* Filter */}
+              <div className="flex bg-slate-900 rounded-lg p-1 border border-slate-800">
+                {categories.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
+                      activeFilter === cat 
+                        ? 'bg-slate-800 text-white shadow-sm' 
+                        : 'text-slate-500 hover:text-slate-300'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {filteredProjects.map(project => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </section>
+
+          {/* Experience Section */}
+          <section>
+            <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <span className="text-teal-500">03.</span> Professional History
+            </h2>
+            
+            <div className="grid grid-cols-1 gap-4">
+              {EXPERIENCE.map((job, i) => (
+                <div key={i} className="flex gap-4 group">
+                  <div className="flex flex-col items-center">
+                    <div className="w-2 h-2 rounded-full bg-slate-800 group-hover:bg-teal-500 transition-colors mt-2"></div>
+                    <div className="w-0.5 h-full bg-slate-800/50 mt-1 group-last:hidden"></div>
+                  </div>
+                  <div className="pb-6">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                      <h3 className="text-slate-200 font-bold text-sm">{job.role}</h3>
+                      <span className="text-xs text-teal-500/80 font-mono">{job.period}</span>
+                    </div>
+                    <div className="text-xs text-slate-500 font-medium mb-1">{job.company}</div>
+                    <p className="text-xs text-slate-400 leading-relaxed max-w-lg">
+                      {job.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Footer / Signature */}
+          <div className="mt-10 pt-6 border-t border-slate-800 flex justify-between items-center text-[10px] text-slate-600 uppercase tracking-widest">
+            <span>All rights reserved</span>
+            <span>© {new Date().getFullYear()} S. Rathnayake</span>
+          </div>
+
+        </main>
+
+      </div>
+    </div>
+  );
+}
